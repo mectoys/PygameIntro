@@ -20,6 +20,12 @@ while not game_over:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game_over = True
+            # Monitorear los mov. del mouse
+        elif event.type == pygame.MOUSEMOTION:
+            x, y = event.pos
+            x -= sprite1.get_width() / 2
+            y -= sprite1.get_height() / 2
+
     pressed = pygame.key.get_pressed()
     if pressed[K_UP]:
         y -= 0.5 * dt
@@ -32,16 +38,16 @@ while not game_over:
     if pressed[K_ESCAPE]:
         x = 0
         y = 0
-    if x > (screen.get_width() -sprite1.get_width()):
-        x=(screen.get_width() -sprite1.get_width())
+    if x > (screen.get_width() - sprite1.get_width()):
+        x = (screen.get_width() - sprite1.get_width())
 
-    if y> (screen.get_height() -sprite1.get_height()):
-        y=(screen.get_height() -sprite1.get_height())
+    if y > (screen.get_height() - sprite1.get_height()):
+        y = (screen.get_height() - sprite1.get_height())
 
-    if x<0:
-        x=0
-    if y<0:
-        y=0
+    if x < 0:
+        x = 0
+    if y < 0:
+        y = 0
     screen.fill((0, 0, 0))
     screen.blit(sprite1, (x, y))
     pygame.display.update()
